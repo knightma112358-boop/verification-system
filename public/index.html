@@ -164,16 +164,14 @@
 
     <!-- ===== 管理页 ===== -->
     <div class="page" id="page-admin">
-      <!-- Token 设置 -->
+      <!-- 管理员密码 -->
       <div class="card">
-        <h3 style="margin-bottom:8px;font-size:.95rem;">🔑 GitHub Token（管理名单必需）</h3>
+        <h3 style="margin-bottom:8px;font-size:.95rem;">🔑 管理员密码</h3>
         <div class="token-setup">
-          <input type="password" id="gh-token" placeholder="粘贴 GitHub Personal Access Token">
+          <input type="password" id="admin-pwd" placeholder="请输入管理密码">
         </div>
         <p class="token-hint">
-          👉 <a href="https://github.com/settings/tokens/new?scopes=repo&description=verification-system" target="_blank">点此创建 Token</a>，
-          权限选 <b>repo</b>，生成后粘贴到上方即可管理名单。
-          <br>（Token 仅存储在你自己浏览器中，不会上传到任何地方）
+          输入密码后解锁名单管理功能（密码仅在本机浏览器验证，不会上传）
         </p>
       </div>
 
@@ -248,21 +246,78 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    // ── 获取 token ──
+    // ── 加密的 GitHub Token（AES-256-GCM + PBKDF2，密码 HZWARE）──
+    const ENCRYPTED_TOKEN = 'HDjqHVqX951N4YOFVrF+ZBlG2mNlNjXiorzOFMX/4VtWWR4D5FB5+Cyj3G4Rc+fMwy6qS5vddnfBE4Rbu7N7KqrMQOhZAYsYDUhu4Eo35JczWFB0';
+
+    let decryptedToken = null; // 密码验证通过后解密缓存在内存中
+
+    // ── 获取有效 token ──
     function getToken() {
-      return localStorage.getItem('gh_pat') || $('#gh-token').value.trim();
+      return decryptedToken;
     }
 
-    // 保存 token
-    $('#gh-token').addEventListener('change', () => {
-      const t = $('#gh-token').value.trim();
-      if (t) { localStorage.setItem('gh_pat', t); toast('Token 已保存'); }
+    // ── 密码解密 Token（Web Crypto API）──
+    async function unlockWithPassword(password) {
+      try {
+        const combined = Uint8Array.from(atob(ENCRYPTED_TOKEN), c => c.charCodeAt(0));
+        const salt = combined.slice(0, 16);
+        const iv = combined.slice(16, 28);
+        const tag = combined.slice(28, 44);
+        const ciphertext = combined.slice(44);
+
+        // PBKDF2 派生密钥
+        const enc = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+        const key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt, iterations: 600000, hash: 'SHA-256' },
+          keyMaterial,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['decrypt']
+        );
+
+        // AES-GCM 解密（将 ciphertext 和 tag 合并）
+        const data = new Uint8Array(ciphertext.length + tag.length);
+        data.set(ciphertext);
+        data.set(tag, ciphertext.length);
+
+        const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, data);
+        decryptedToken = new TextDecoder().decode(decrypted);
+        return true;
+      } catch (e) {
+        console.error('解密失败:', e);
+        return false;
+      }
+    }
+
+    // 管理员密码输入
+    $('#admin-pwd').addEventListener('change', async () => {
+      const pwd = $('#admin-pwd').value.trim();
+      if (!pwd) return;
+      const ok = await unlockWithPassword(pwd);
+      if (ok) {
+        toast('✅ 密码正确，已解锁管理功能');
+        refreshAdminList();
+      } else {
+        toast('❌ 密码错误');
+        decryptedToken = null;
+      }
     });
-    // 初始化加载 localStorage 中的 token
+    // 页面加载时尝试自动解密（如果 localStorage 存过密码）
     (() => {
-      const saved = localStorage.getItem('gh_pat');
-      if (saved) $('#gh-token').value = saved;
+      const saved = localStorage.getItem('admin_pwd');
+      if (saved) {
+        $('#admin-pwd').value = saved;
+        unlockWithPassword(saved).then(ok => {
+          if (ok && $('#page-admin').classList.contains('active')) refreshAdminList();
+        });
+      }
     })();
+    // 记住密码（可选）
+    $('#admin-pwd').addEventListener('blur', () => {
+      const pwd = $('#admin-pwd').value.trim();
+      if (pwd && decryptedToken) localStorage.setItem('admin_pwd', pwd);
+    });
 
     // ── 从 GitHub API 读取名单 ──
     async function loadPersonnelFromGitHub() {
