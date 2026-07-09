@@ -319,6 +319,21 @@
       if (pwd && decryptedToken) localStorage.setItem('admin_pwd', pwd);
     });
 
+    // ── Base64 ↔ UTF-8 转换 ──
+    function base64ToUtf8(base64) {
+      const binary = atob(base64.replace(/\n/g, ''));
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+    function utf8ToBase64(str) {
+      const encoder = new TextEncoder();
+      const bytes = encoder.encode(str);
+      let binary = '';
+      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+      return btoa(binary);
+    }
+
     // ── 从 GitHub API 读取名单 ──
     async function loadPersonnelFromGitHub() {
       const token = getToken();
@@ -328,8 +343,8 @@
         const resp = await fetch(API_BASE, { headers, cache: 'no-store' });
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         const data = await resp.json();
-        // GitHub API returns content as base64
-        const json = atob(data.content.replace(/\n/g, ''));
+        // GitHub API 返回 base64，需要正确解码 UTF-8
+        const json = base64ToUtf8(data.content);
         return { data: JSON.parse(json), sha: data.sha, total: JSON.parse(json).length };
       } catch (err) {
         console.error('加载名单失败:', err);
@@ -352,9 +367,9 @@
     // ── 保存名单到 GitHub ──
     async function savePersonnelToGitHub(list, sha) {
       const token = getToken();
-      if (!token) { toast('⚠️ 请先设置 GitHub Token'); return false; }
+      if (!token) { toast('⚠️ 请先输入管理密码'); return false; }
 
-      const content = btoa(unescape(encodeURIComponent(JSON.stringify(list, null, 2))));
+      const content = utf8ToBase64(JSON.stringify(list, null, 2));
       try {
         const resp = await fetch(API_BASE, {
           method: 'PUT',
