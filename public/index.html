@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>人员验证系统</title>
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --success: #059669;
+      --danger: #DC2626;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --text: #1E293B;
+      --text-secondary: #64748B;
+      --border: #E2E8F0;
+      --radius: 14px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* ── Header ── */
+    .header {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 20px 16px 18px;
+      box-shadow: 0 2px 8px rgba(79,70,229,.25);
+    }
+    .header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .header .sub {
+      font-size: .8rem;
+      opacity: .8;
+      margin-top: 4px;
+    }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      width: calc(100% - 32px);
+      max-width: 420px;
+      margin: 16px auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all .2s;
+      border-bottom: 3px solid transparent;
+    }
+    .tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: #EEF2FF;
+    }
+
+    /* ── Main Content ── */
+    .main {
+      width: 100%;
+      max-width: 420px;
+      padding: 0 16px;
+      flex: 1;
+    }
+
+    .page {
+      display: none;
+      margin-top: 20px;
+    }
+    .page.active {
+      display: block;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    /* ── Form ── */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 13px 14px;
+      font-size: 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .2s;
+      background: #FAFBFC;
+      color: var(--text);
+    }
+    .form-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,.1);
+    }
+    .form-group input::placeholder {
+      color: #94A3B8;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .04em;
+      text-align: center;
+    }
+    .btn:active {
+      transform: scale(.97);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #4338CA;
+    }
+    .btn-success {
+      background: var(--success);
+      color: #fff;
+    }
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: .82rem;
+      width: auto;
+      display: inline-block;
+    }
+
+    /* ── Result ── */
+    .result {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: var(--radius);
+      text-align: center;
+      display: none;
+      animation: fadeIn .3s ease;
+    }
+    .result.show {
+      display: block;
+    }
+    .result.authorized {
+      background: #ECFDF5;
+      border: 2px solid #6EE7B7;
+    }
+    .result.unauthorized {
+      background: #FEF2F2;
+      border: 2px solid #FECACA;
+    }
+    .result .icon {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+    .result .status {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .result.authorized .status {
+      color: var(--success);
+    }
+    .result.unauthorized .status {
+      color: var(--danger);
+    }
+    .result .detail {
+      font-size: .85rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Admin ── */
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .admin-actions .btn {
+      flex: 1;
+      min-width: 100px;
+      font-size: .85rem;
+      padding: 10px;
+    }
+
+    .person-list {
+      list-style: none;
+      max-height: 50vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .person-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .person-item:last-child {
+      border-bottom: none;
+    }
+    .person-info {
+      flex: 1;
+    }
+    .person-info .p-name {
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .person-info .p-meta {
+      font-size: .78rem;
+      color: var(--text-secondary);
+    }
+    .person-item .btn-sm {
+      padding: 6px 14px;
+      font-size: .78rem;
+      flex-shrink: 0;
+    }
+
+    .stats {
+      text-align: center;
+      font-size: .85rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .stats strong {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    /* ── Batch Import ── */
+    .batch-area {
+      width: 100%;
+      min-height: 120px;
+      font-size: .85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      resize: vertical;
+      font-family: inherit;
+      outline: none;
+      margin-bottom: 12px;
+      background: #FAFBFC;
+    }
+    .batch-area:focus {
+      border-color: var(--primary);
+    }
+    .batch-hint {
+      font-size: .75rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1E293B;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: .9rem;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: .72rem;
+      color: var(--text-secondary);
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🔐 人员验证系统</h1>
+    <div class="sub">扫码验证 · 实时查询</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-page="verify">✅ 身份验证</div>
+    <div class="tab" data-page="admin">⚙️ 名单管理</div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- ========== 验证页 ========== -->
+    <div class="page active" id="page-verify">
+      <div class="card">
+        <form id="verify-form" autocomplete="off">
+          <div class="form-group">
+            <label for="input-name">姓名</label>
+            <input type="text" id="input-name" placeholder="请输入姓名" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="input-id">工号</label>
+            <input type="text" id="input-id" placeholder="请输入工号" required>
+          </div>
+          <button type="submit" class="btn btn-primary">🔍 验证身份</button>
+        </form>
+
+        <!-- QR 码（桌面端展示，方便扫码） -->
+        <div style="text-align:center;margin-top:20px;" id="qrcode-section">
+          <p style="font-size:.82rem;color:var(--text-secondary);margin-bottom:10px;">📱 扫描二维码进入验证</p>
+          <img src="/qrcode.png" alt="QR Code" style="width:180px;height:180px;border-radius:10px;box-shadow:var(--shadow);">
+          <p style="font-size:.72rem;color:var(--text-secondary);margin-top:8px;word-break:break-all;">
+            http://192.168.0.102:3000
+          </p>
+        </div>
+
+        <!-- 验证结果 -->
+        <div class="result" id="result">
+          <div class="icon" id="result-icon"></div>
+          <div class="status" id="result-status"></div>
+          <div class="detail" id="result-detail"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 管理页 ========== -->
+    <div class="page" id="page-admin">
+      <!-- 添加单人 -->
+      <div class="card">
+        <h3 style="margin-bottom:14px;font-size:.95rem;">➕ 添加人员</h3>
+        <form id="add-form" autocomplete="off">
+          <div class="form-group">
+            <label for="add-name">姓名</label>
+            <input type="text" id="add-name" placeholder="姓名" required>
+          </div>
+          <div class="form-group">
+            <label for="add-id">工号</label>
+            <input type="text" id="add-id" placeholder="工号" required>
+          </div>
+          <div class="form-group">
+            <label for="add-dept">部门（选填）</label>
+            <input type="text" id="add-dept" placeholder="部门">
+          </div>
+          <button type="submit" class="btn btn-success">✅ 添加到名单</button>
+        </form>
+      </div>
+
+      <!-- 批量导入 -->
+      <div class="card">
+        <h3 style="margin-bottom:8px;font-size:.95rem;">📋 批量导入</h3>
+        <p class="batch-hint">每行一个人员，格式：<code>姓名,工号,部门</code>（部门可省略）</p>
+        <textarea class="batch-area" id="batch-input" placeholder="张三,001,技术部&#10;李四,002,产品部&#10;王五,003"></textarea>
+        <button class="btn btn-outline" id="btn-batch">📥 批量导入</button>
+      </div>
+
+      <!-- 名单列表 -->
+      <div class="card">
+        <h3 style="margin-bottom:8px;font-size:.95rem;">📜 当前名单</h3>
+        <div class="stats" id="stats">加载中...</div>
+        <ul class="person-list" id="person-list"></ul>
+        <div style="margin-top:12px;">
+          <button class="btn btn-danger btn-sm" id="btn-clear">🗑 清空名单</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Footer -->
+  <div class="footer">人员验证系统 v1.0 · 数据实时生效</div>
+
+  <script>
+    // ── 工具函数 ──
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    function toast(msg) {
+      const el = $('#toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove('show'), 2000);
+    }
+
+    // ── Tab 切换 ──
+    $$('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        $$('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        $$('.page').forEach(p => p.classList.remove('active'));
+        $('#page-' + tab.dataset.page).classList.add('active');
+        if (tab.dataset.page === 'admin') loadPersonnel();
+      });
+    });
+
+    // ── 验证身份 ──
+    $('#verify-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = $('#input-name').value.trim();
+      const id = $('#input-id').value.trim();
+
+      if (!name || !id) {
+        toast('请填写姓名和工号');
+        return;
+      }
+
+      try {
+        const resp = await fetch(`/api/verify?name=${encodeURIComponent(name)}&id=${encodeURIComponent(id)}`);
+        const data = await resp.json();
+
+        const result = $('#result');
+        const icon = $('#result-icon');
+        const status = $('#result-status');
+        const detail = $('#result-detail');
+
+        result.classList.remove('authorized', 'unauthorized', 'show');
+
+        if (data.authorized) {
+          result.classList.add('authorized', 'show');
+          icon.textContent = '✅';
+          status.textContent = '已授权';
+          detail.textContent = `${data.person.name} · ${data.person.id} · ${data.person.department || '—'}`;
+          // vibrate on mobile
+          if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        } else {
+          result.classList.add('unauthorized', 'show');
+          icon.textContent = '🚫';
+          status.textContent = '未授权';
+          detail.textContent = '该人员不在授权名单中';
+          if (navigator.vibrate) navigator.vibrate(200);
+        }
+
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        toast('网络错误，请重试');
+        console.error(err);
+      }
+    });
+
+    // ── 添加人员 ──
+    $('#add-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = $('#add-name').value.trim();
+      const id = $('#add-id').value.trim();
+      const department = $('#add-dept').value.trim();
+
+      try {
+        const resp = await fetch('/api/personnel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, id, department })
+        });
+        const data = await resp.json();
+        if (data.success) {
+          toast('✅ ' + data.message);
+          $('#add-form').reset();
+          loadPersonnel();
+        } else {
+          toast('⚠️ ' + data.message);
+        }
+      } catch (err) {
+        toast('网络错误');
+      }
+    });
+
+    // ── 批量导入 ──
+    $('#btn-batch').addEventListener('click', async () => {
+      const raw = $('#batch-input').value.trim();
+      if (!raw) { toast('请粘贴人员数据'); return; }
+
+      const lines = raw.split('\n').filter(Boolean);
+      const persons = lines.map(line => {
+        const parts = line.split(',').map(s => s.trim());
+        return { name: parts[0], id: parts[1], department: parts[2] || '' };
+      });
+
+      try {
+        const resp = await fetch('/api/personnel/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ persons })
+        });
+        const data = await resp.json();
+        toast(data.message);
+        $('#batch-input').value = '';
+        loadPersonnel();
+      } catch (err) {
+        toast('网络错误');
+      }
+    });
+
+    // ── 加载名单 ──
+    async function loadPersonnel() {
+      try {
+        const resp = await fetch('/api/personnel');
+        const data = await resp.json();
+        $('#stats').innerHTML = `共 <strong>${data.total}</strong> 人在名单中`;
+        const list = $('#person-list');
+        list.innerHTML = data.data.map(p => `
+          <li class="person-item">
+            <div class="person-info">
+              <div class="p-name">${esc(p.name)}</div>
+              <div class="p-meta">工号: ${esc(p.id)} ${p.department ? '· ' + esc(p.department) : ''}</div>
+            </div>
+            <button class="btn btn-danger btn-sm" data-id="${esc(p.id)}" onclick="deletePerson('${esc(p.id)}')">删除</button>
+          </li>
+        `).join('');
+      } catch (err) {
+        toast('加载名单失败');
+      }
+    }
+
+    function esc(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ── 删除人员 ──
+    async function deletePerson(id) {
+      if (!confirm(`确定删除工号 ${id} 的人员吗？`)) return;
+      try {
+        const resp = await fetch(`/api/personnel/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        const data = await resp.json();
+        toast(data.message);
+        loadPersonnel();
+      } catch (err) {
+        toast('删除失败');
+      }
+    }
+
+    // ── 清空名单 ──
+    $('#btn-clear').addEventListener('click', async () => {
+      if (!confirm('⚠️ 确定要清空全部名单吗？此操作不可恢复！')) return;
+      try {
+        await fetch('/api/personnel/clear', { method: 'POST' });
+        toast('名单已清空');
+        loadPersonnel();
+      } catch (err) {
+        toast('操作失败');
+      }
+    });
+
+    // ── 回车快速验证 ──
+    $('#input-id').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        $('#verify-form').dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+</body>
+</html>
