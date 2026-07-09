@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>人员验证系统</title>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <style>
     :root {
       --primary: #4F46E5;
@@ -198,9 +199,12 @@
       <!-- 批量导入 -->
       <div class="card">
         <h3 style="margin-bottom:8px;font-size:.95rem;">📋 批量导入</h3>
-        <p class="batch-hint">每行一个人员，格式：<code>姓名,工号,部门</code>（部门可省略）</p>
+        <p class="batch-hint">方式一：粘贴文本（每行：<code>姓名,工号,部门</code>）</p>
         <textarea class="batch-area" id="batch-input" placeholder="张三,001,技术部&#10;李四,002,产品部&#10;王五,003"></textarea>
-        <button class="btn btn-outline" id="btn-batch">📥 批量导入</button>
+        <button class="btn btn-outline" id="btn-batch" style="margin-bottom:12px;">📥 文本导入</button>
+        <p class="batch-hint">方式二：上传 Excel 文件（第一行表头：<b>姓名 | 工号 | 部门</b>，支持 .xlsx / .xls）</p>
+        <input type="file" id="excel-file" accept=".xlsx,.xls" style="display:none;">
+        <button class="btn btn-outline" id="btn-excel-import">📥 Excel 导入</button>
       </div>
 
       <!-- 名单 -->
@@ -210,6 +214,7 @@
         <ul class="person-list" id="person-list"></ul>
         <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
           <button class="btn btn-danger btn-sm" id="btn-clear">🗑 清空名单</button>
+          <button class="btn btn-outline btn-sm" id="btn-excel-export">📤 导出 Excel</button>
           <button class="btn btn-outline btn-sm" onclick="location.reload()">🔄 刷新名单</button>
         </div>
       </div>
@@ -545,6 +550,90 @@
       if (!result) return;
       const ok = await savePersonnelToGitHub([], result.sha);
       if (ok) { toast('名单已清空'); refreshAdminList(); }
+    });
+
+    // ── Excel 导入 ──
+    $('#btn-excel-import').addEventListener('click', () => $('#excel-file').click());
+
+    $('#excel-file').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const result = await loadPersonnelFromGitHub();
+      if (!result) { toast('⚠️ 请先输入管理密码'); e.target.value = ''; return; }
+
+      const reader = new FileReader();
+      reader.onload = async (evt) => {
+        try {
+          const wb = XLSX.read(evt.target.result, { type: 'array' });
+          const ws = wb.Sheets[wb.SheetNames[0]];
+          const rows = XLSX.utils.sheet_to_json(ws, { header: 1 });
+
+          if (rows.length < 2) { toast('Excel 至少需要一行表头 + 一行数据'); return; }
+
+          // 第一行是表头
+          const header = rows[0].map(h => String(h || '').trim());
+          const nameCol = header.findIndex(h => h.includes('姓名'));
+          const idCol = header.findIndex(h => h.includes('工号'));
+          const deptCol = header.findIndex(h => h.includes('部门'));
+
+          if (nameCol === -1 || idCol === -1) {
+            toast('表头必须包含「姓名」和「工号」列');
+            return;
+          }
+
+          const { data: list, sha } = result;
+          let added = 0, skipped = 0;
+
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i];
+            const name = String(row[nameCol] || '').trim();
+            const id = String(row[idCol] || '').trim();
+            const dept = deptCol >= 0 ? String(row[deptCol] || '').trim() : '';
+
+            if (!name || !id) continue;
+            if (list.find(p => p.id === id)) { skipped++; continue; }
+
+            list.push({ id, name, department: dept });
+            added++;
+          }
+
+          if (added === 0 && skipped === 0) { toast('Excel 中没有有效数据'); return; }
+
+          const ok = await savePersonnelToGitHub(list, sha);
+          if (ok) {
+            toast(`✅ Excel 导入完成：新增 ${added} 人，跳过 ${skipped} 人`);
+            refreshAdminList();
+          }
+        } catch (err) {
+          toast('❌ Excel 解析失败: ' + err.message);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+      e.target.value = '';
+    });
+
+    // ── Excel 导出 ──
+    $('#btn-excel-export').addEventListener('click', async () => {
+      const result = await loadPersonnelFromGitHub();
+      if (!result) { toast('⚠️ 请先输入管理密码'); return; }
+
+      const { data: list } = result;
+      if (list.length === 0) { toast('名单为空，无需导出'); return; }
+
+      // 构建 Excel 数据
+      const rows = [['姓名', '工号', '部门']];
+      for (const p of list) rows.push([p.name, p.id, p.department || '']);
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet(rows);
+
+      // 设置列宽
+      ws['!cols'] = [{ wch: 15 }, { wch: 15 }, { wch: 20 }];
+
+      XLSX.utils.book_append_sheet(wb, ws, '人员名单');
+      XLSX.writeFile(wb, `人员名单_${new Date().toISOString().slice(0, 10)}.xlsx`);
+      toast('📤 导出成功');
     });
 
     // ── 回车触发验证 ──
