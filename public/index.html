@@ -352,10 +352,12 @@
       }
     }
 
-    // ── 从同源直接读取（不用 token，用于验证页） ──
+    // ── 从 GitHub Raw 直接读取（即时生效，不走 Pages CDN 缓存）──
     async function loadPersonnelDirect() {
       try {
-        const resp = await fetch('./' + DATA_PATH, { cache: 'no-store' });
+        // 加时间戳避免浏览器缓存
+        const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/master/${DATA_PATH}?t=${Date.now()}`;
+        const resp = await fetch(url, { cache: 'no-store' });
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         return await resp.json();
       } catch (err) {
