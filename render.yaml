@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: verification-system
+    runtime: node
+    repo: https://github.com/knightma112358-boop/verification-system
+    plan: free
+    branch: master
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: "3000"
