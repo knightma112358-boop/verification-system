@@ -5,6 +5,7 @@ import { formatAuthorizationDate, isAuthorizationExpired, parseAuthorizationDate
 test('normalizes supported authorization date formats', () => {
   assert.equal(formatAuthorizationDate('2026-07-14'), '2026/7/14');
   assert.equal(formatAuthorizationDate('2026/7/14'), '2026/7/14');
+  assert.equal(formatAuthorizationDate('2026.7.14'), '2026/7/14');
   assert.equal(parseAuthorizationDate('2026/2/30'), null);
 });
 

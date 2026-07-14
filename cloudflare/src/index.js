@@ -237,7 +237,7 @@ function normalizeText(value, maxLength) {
 }
 
 export function parseAuthorizationDate(value) {
-  const match = String(value || '').trim().match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);
+  const match = String(value || '').trim().match(/^(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})$/);
   if (!match) return null;
   const year = Number(match[1]);
   const month = Number(match[2]);
