@@ -1,1 +1,2864 @@
-[]
+[
+  {
+    "id": "P636160",
+    "name": "艾旭洋",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P194519",
+    "name": "梁春鹏",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P152698",
+    "name": "张强",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P632215",
+    "name": "张洋",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P636437",
+    "name": "庄洪发",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P251570",
+    "name": "游伟",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P264053",
+    "name": "秦宣昕",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P637946",
+    "name": "马建波",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P639934",
+    "name": "陈茂杰",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P173841",
+    "name": "李鹏宇",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P284430",
+    "name": "薄宇庚",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P642463",
+    "name": "邵贞岚",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P269166",
+    "name": "徐俊",
+    "department": "安全防护部",
+    "authorizationDate": "2026/4/23"
+  },
+  {
+    "id": "P187360",
+    "name": "朱用馨",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P232235",
+    "name": "李占兵",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P263554",
+    "name": "王庆昌",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P213761",
+    "name": "杨逸舟",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P232238",
+    "name": "李格",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P300238",
+    "name": "丁记晨",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P787428",
+    "name": "卢建",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P266459",
+    "name": "黄云涛",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P300236",
+    "name": "杨帅",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P229991",
+    "name": "米鹏",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P232249",
+    "name": "林广胜",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P261298",
+    "name": "方良君",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P189768",
+    "name": "张才华",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P278142",
+    "name": "李金生",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P189675",
+    "name": "洪全波",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P240947",
+    "name": "高夕东",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P263606",
+    "name": "雷德利",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P643270",
+    "name": "姜正明",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P640383",
+    "name": "王鑫杰",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P313680",
+    "name": "吴永斌",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P138707",
+    "name": "罗森",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P315163",
+    "name": "江昊远",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P315161",
+    "name": "曹川雨",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P315162",
+    "name": "茶国义",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P136572",
+    "name": "程小杰",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P130442",
+    "name": "王建东",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P234754",
+    "name": "黄耿杰",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P244521",
+    "name": "姜中一",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P256221",
+    "name": "代顺兴",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P256261",
+    "name": "石昊扬",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P269256",
+    "name": "侯嘉译",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P268987",
+    "name": "刘天昊",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P284484",
+    "name": "唐兆博",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P284470",
+    "name": "袁帅",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P186642",
+    "name": "赵伟钦",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P303288",
+    "name": "刘鑫生",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P303200",
+    "name": "刘星雨",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P303188",
+    "name": "范成洋",
+    "department": "电气部",
+    "authorizationDate": "2026/6/30"
+  },
+  {
+    "id": "P310350",
+    "name": "袁洁",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P244547",
+    "name": "陈星宇",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P186749",
+    "name": "王蒙",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P786420",
+    "name": "梁庄",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P786464",
+    "name": "周强",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P785285",
+    "name": "左自勇",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P263524",
+    "name": "王金帆",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P238458",
+    "name": "武忠",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P149644",
+    "name": "王宗刚",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P224340",
+    "name": "赵鹏飞",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P289769",
+    "name": "黄中平",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P122103",
+    "name": "孔凡虎",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P219742",
+    "name": "杨柏桐",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P214272",
+    "name": "田浩宇",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P787253",
+    "name": "童志成",
+    "department": "工程改造部",
+    "authorizationDate": "2026/7/8"
+  },
+  {
+    "id": "P154704",
+    "name": "胡云龙",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P189893",
+    "name": "曹洲舟",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P260869",
+    "name": "朱国进",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P270780",
+    "name": "陈伟峰",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P473121",
+    "name": "周渊",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P246565",
+    "name": "陈伟明",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P239934",
+    "name": "熊子浩",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P268960",
+    "name": "林景焕",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P271269",
+    "name": "颜泽林",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P274979",
+    "name": "魏志雄",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P274980",
+    "name": "谢珣正",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P266371",
+    "name": "陈锐铮",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P298159",
+    "name": "邓建东",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P133224",
+    "name": "邢会玲",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P293264",
+    "name": "张君",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P309641",
+    "name": "黄坤",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P311165",
+    "name": "陈年双",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P311651",
+    "name": "谢晓玲",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P312300",
+    "name": "陈梓健",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P313796",
+    "name": "蔡耀新",
+    "department": "合同采购部",
+    "authorizationDate": "2026/4/15"
+  },
+  {
+    "id": "P146256",
+    "name": "张彦岩",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P503502",
+    "name": "冉微微",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P122273",
+    "name": "杨魁",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P256282",
+    "name": "黄招宝",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P284403",
+    "name": "徐易鑫",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303279",
+    "name": "刘宗亮",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303234",
+    "name": "戴顺",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303116",
+    "name": "邓泽浩晨",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234742",
+    "name": "向薇",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P244526",
+    "name": "沈牧原",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P284498",
+    "name": "王利民",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P244525",
+    "name": "赵淑琪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P268992",
+    "name": "陈祖江",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234788",
+    "name": "查少秋",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P186521",
+    "name": "刘恋",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P256239",
+    "name": "赵成龙",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234730",
+    "name": "芦易",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P266527",
+    "name": "陈若雯",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P266615",
+    "name": "邓小天",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P315601",
+    "name": "胡志坤",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P637474",
+    "name": "刘琦峰",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P637684",
+    "name": "张水英",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P637934",
+    "name": "伍森怡",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P637940",
+    "name": "庞宇豪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P639268",
+    "name": "陈佳磊",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P640842",
+    "name": "植晓兰",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P640843",
+    "name": "魏栎",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642966",
+    "name": "周媛煜慧",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P644840",
+    "name": "黎志强",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P644841",
+    "name": "蓝相旺",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645722",
+    "name": "周祖航",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P266053",
+    "name": "黄榕森",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645840",
+    "name": "杜主涛",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645841",
+    "name": "王绍望",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645843",
+    "name": "郭健成",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309726",
+    "name": "蔡考锋",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P311115",
+    "name": "谢坤剑",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P310029",
+    "name": "吴嘉易",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P310988",
+    "name": "李玮松",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P310989",
+    "name": "梁宇雄",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P311821",
+    "name": "朱奕",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P312643",
+    "name": "郑冰依",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314681",
+    "name": "张培义",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P173748",
+    "name": "贾津",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P153382",
+    "name": "王国良",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234721",
+    "name": "刘楚",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234672",
+    "name": "陈马韬",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P244565",
+    "name": "张惟赫",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P249486",
+    "name": "曹秉森",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P256229",
+    "name": "唐文邦",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P260660",
+    "name": "赵健力",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P284505",
+    "name": "张扬",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303233",
+    "name": "甘泰宇",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P266619",
+    "name": "蔡汶鸿",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P267111",
+    "name": "胡铨添",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P636122",
+    "name": "黄昊",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P637683",
+    "name": "邱健",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P638109",
+    "name": "黄金昶",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P638407",
+    "name": "曾文磊",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P638682",
+    "name": "罗伟玲",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P288623",
+    "name": "李芊蕊",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P640848",
+    "name": "陈熠生",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P624359",
+    "name": "邓杰伟",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642745",
+    "name": "刘振飞",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P643930",
+    "name": "唐学文",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645068",
+    "name": "何晨曦",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645069",
+    "name": "许浩霖",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645070",
+    "name": "彭学武",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645071",
+    "name": "白垣航",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645564",
+    "name": "卢勇延",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645847",
+    "name": "冯推崇",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645984",
+    "name": "苏奥博",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P306027",
+    "name": "向力豪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P297234",
+    "name": "赵权辉",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P312166",
+    "name": "郑惠诗",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P312167",
+    "name": "杨志行",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P312168",
+    "name": "陈伟泽",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P302708",
+    "name": "邓建生",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P313682",
+    "name": "林柯健",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P145262",
+    "name": "汪焕",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P105496",
+    "name": "王希旭",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P233575",
+    "name": "赵晨曦",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P244505",
+    "name": "徐国鹏",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P256228",
+    "name": "陈俊楠",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P256276",
+    "name": "孟耀辉",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P269047",
+    "name": "莫琪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P269175",
+    "name": "赵鑫海",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P284434",
+    "name": "黄魏",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P284508",
+    "name": "于兴毫",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303238",
+    "name": "瞿钟情",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P303097",
+    "name": "周扬",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P272382",
+    "name": "谭振华",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P278025",
+    "name": "王新宇",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P643312",
+    "name": "叶亦青",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P643715",
+    "name": "张旭恒",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P644731",
+    "name": "刘泽磊",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645565",
+    "name": "陈明芳",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645721",
+    "name": "陈枝颖",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P311865",
+    "name": "柏雪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314124",
+    "name": "李绍懿",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314123",
+    "name": "杨卓军",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314122",
+    "name": "何文杰",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314459",
+    "name": "罗晓彤",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314458",
+    "name": "陈宗健",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P315629",
+    "name": "罗阳波",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P135182",
+    "name": "范文灏",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P225561",
+    "name": "周慧敏",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P639266",
+    "name": "郭晋",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642321",
+    "name": "颜泽鑫",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642362",
+    "name": "杨武",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642324",
+    "name": "杨国强",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645123",
+    "name": "王南翔",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645123",
+    "name": "叶嘉琪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P649288",
+    "name": "黄杰兰",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642355",
+    "name": "张莹",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P649631",
+    "name": "范秀珍",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P265303",
+    "name": "赖年均",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642339",
+    "name": "马忠宝",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642352",
+    "name": "赖岳耀",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P266526",
+    "name": "谢祯",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P289786",
+    "name": "巴东阳",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P274214",
+    "name": "梁宇翔",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642968",
+    "name": "李家强",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314120",
+    "name": "丘惠琪",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314121",
+    "name": "林源彬",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P648839",
+    "name": "张干威",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P645563",
+    "name": "肖文龙",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P642962",
+    "name": "温慧娴",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P640847",
+    "name": "郭巧云",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P636136",
+    "name": "林文丽",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P641530",
+    "name": "肖秋梅",
+    "department": "化学环保部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P234719",
+    "name": "冯朗明",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234682",
+    "name": "蒋德科",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234605",
+    "name": "舒一鸣",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269018",
+    "name": "严仕密",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269055",
+    "name": "黄世辉",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P162965",
+    "name": "杨锦程",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269052",
+    "name": "廖梦晨",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P156609",
+    "name": "李海秋",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284459",
+    "name": "陈祉良",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256206",
+    "name": "卓于凡",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269050",
+    "name": "阳仕明",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269063",
+    "name": "方黎",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269016",
+    "name": "吴非",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P503775",
+    "name": "朱景光",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234722",
+    "name": "钟文轩",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P136645",
+    "name": "刘正君",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P210152",
+    "name": "黄永超",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P237400",
+    "name": "朱力群",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P235832",
+    "name": "李益才",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P225602",
+    "name": "包英",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P298894",
+    "name": "苏朝新",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P627901",
+    "name": "杨玉波",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303182",
+    "name": "韩鑫定",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303099",
+    "name": "姚令国",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303276",
+    "name": "文开俊",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P306594",
+    "name": "王鹏涛",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P175207",
+    "name": "陈家炜",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P162956",
+    "name": "朱云驰",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234700",
+    "name": "文宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234778",
+    "name": "赵远凯",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244586",
+    "name": "崔天宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284448",
+    "name": "纪飞强",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284436",
+    "name": "朱周全",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303306",
+    "name": "吴政贤",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303196",
+    "name": "黄奎",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303108",
+    "name": "武发源",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303084",
+    "name": "龚禹豪",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P102323",
+    "name": "赵敏",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P890176",
+    "name": "卢宁",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P136773",
+    "name": "刘昊",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P137361",
+    "name": "纪文宝",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P145044",
+    "name": "陈适",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234753",
+    "name": "许家豪",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234759",
+    "name": "余龙",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244532",
+    "name": "吴子成",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244570",
+    "name": "陈国龙",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256226",
+    "name": "李龙娟",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256237",
+    "name": "李寰宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256246",
+    "name": "邓文俊",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256255",
+    "name": "朱雨轩",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269008",
+    "name": "骆正昊",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P980108",
+    "name": "巩海龙",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P990007",
+    "name": "田俊波",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284431",
+    "name": "陈佳霖",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284427",
+    "name": "霍曼妮",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303298",
+    "name": "侯垚兵",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303212",
+    "name": "陈坚城",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303186",
+    "name": "陈石",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303231",
+    "name": "钟子行",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P125029",
+    "name": "周峰",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P195093",
+    "name": "李均熠",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P205381",
+    "name": "王智慧",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234423",
+    "name": "杨晨",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234734",
+    "name": "白文峻",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244491",
+    "name": "刘华栋",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256247",
+    "name": "黄洋",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256251",
+    "name": "谢震宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256254",
+    "name": "周广渝",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269012",
+    "name": "曹中天",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269173",
+    "name": "王文宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284495",
+    "name": "杨阳",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P288890",
+    "name": "周子航",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303176",
+    "name": "欧欣杭",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303190",
+    "name": "张雨鹏",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303295",
+    "name": "杨牧原",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303110",
+    "name": "王忠禹",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303309",
+    "name": "戎广宝",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303258",
+    "name": "易文河",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P306602",
+    "name": "陈警",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P145098",
+    "name": "刘阳",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P159205",
+    "name": "孙洪涛",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234620",
+    "name": "耿良晨",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244498",
+    "name": "杨瑞杰",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244569",
+    "name": "尹超",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269169",
+    "name": "李沐霖",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269255",
+    "name": "尹九洲",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284407",
+    "name": "刘艺峰",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303286",
+    "name": "周正武",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303080",
+    "name": "胡宇雄",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303122",
+    "name": "沈广锋",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303304",
+    "name": "张能祥",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P306597",
+    "name": "梁明昊",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P120873",
+    "name": "高扬",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P164128",
+    "name": "严斌",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P225288",
+    "name": "何豪庆",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234697",
+    "name": "陈小军",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P244487",
+    "name": "王继龙",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256208",
+    "name": "张纪珩",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256268",
+    "name": "谢绍林",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P262031",
+    "name": "曾东钟",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269058",
+    "name": "钱仕雄",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284439",
+    "name": "张新宇",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284416",
+    "name": "李承阳",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303223",
+    "name": "谢栋廷",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303112",
+    "name": "官昌文",
+    "department": "机械部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234747",
+    "name": "桂俊杰",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P193901",
+    "name": "王凯杰",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P641892",
+    "name": "田文卓",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P310056",
+    "name": "黄嘉豪",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P311623",
+    "name": "黄孝军",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P641894",
+    "name": "杨晖",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P315079",
+    "name": "吕全",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P263639",
+    "name": "杜良奎",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P645224",
+    "name": "熊威",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P311631",
+    "name": "陈其桔",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P630684",
+    "name": "高艳龙",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303089",
+    "name": "侯文君",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P788070",
+    "name": "钱林",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P311882",
+    "name": "杨康",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P283701",
+    "name": "苏得志",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P231701",
+    "name": "周小琳",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303226",
+    "name": "王麒舜",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P225490",
+    "name": "张森",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234670",
+    "name": "方晓婕",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P269026",
+    "name": "王博",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P303280",
+    "name": "陈越",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P639521",
+    "name": "李宏杰",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P267740",
+    "name": "吴应洲",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P296467",
+    "name": "黄海文",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P627220",
+    "name": "陈杰波",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P786787",
+    "name": "王修富",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P646409",
+    "name": "裴永禄",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284535",
+    "name": "陈源煜",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P293430",
+    "name": "曾广龙",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P284528",
+    "name": "王子健",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P242626",
+    "name": "陈儿挺",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P310294",
+    "name": "苏钊海",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P234717",
+    "name": "路震震",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P297986",
+    "name": "倪峰",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P298704",
+    "name": "张凯",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P198776",
+    "name": "廖俊华",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P633370",
+    "name": "尹展彬",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P629228",
+    "name": "尹崇汶",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P256271",
+    "name": "蒋伟",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P290814",
+    "name": "马一弘",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P168752",
+    "name": "李杰",
+    "department": "技术支持部",
+    "authorizationDate": "2026/7/1"
+  },
+  {
+    "id": "P298436",
+    "name": "冯新强",
+    "department": "技术支持部",
+    "authorizationDate": "2026/4/1"
+  },
+  {
+    "id": "P298455",
+    "name": "黎健明",
+    "department": "技术支持部",
+    "authorizationDate": "2026/4/1"
+  },
+  {
+    "id": "P185287",
+    "name": "代永旭",
+    "department": "技术支持部",
+    "authorizationDate": "2026/4/1"
+  },
+  {
+    "id": "P787127",
+    "name": "邓芝贵",
+    "department": "技术支持部",
+    "authorizationDate": "2026/4/1"
+  },
+  {
+    "id": "P301299",
+    "name": "宗康玖",
+    "department": "技术支持部",
+    "authorizationDate": "2026/4/1"
+  },
+  {
+    "id": "P641893",
+    "name": "巨晨阳",
+    "department": "技术支持部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P640002",
+    "name": "黄海云",
+    "department": "技术支持部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P640069",
+    "name": "邹金铖",
+    "department": "技术支持部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P645225",
+    "name": "黄灿文",
+    "department": "技术支持部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P245088",
+    "name": "尹伟业",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P303576",
+    "name": "张俊哲",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P297160",
+    "name": "黄思仁",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P254230",
+    "name": "农舰",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P286178",
+    "name": "桂国强",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P285743",
+    "name": "刘威",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P256223",
+    "name": "贾梦帆",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P303166",
+    "name": "王雪峰",
+    "department": "技术支持部",
+    "authorizationDate": "2025/11/12"
+  },
+  {
+    "id": "P212264",
+    "name": "田东廷",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P276043",
+    "name": "石林",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P279237",
+    "name": "唐思睿",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P300931",
+    "name": "林汇杰",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309347",
+    "name": "陈嘉莉",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309351",
+    "name": "张启凡",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P189524",
+    "name": "张朝滨",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309346",
+    "name": "苏冠升",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309340",
+    "name": "彭美庆",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309343",
+    "name": "杨忠威",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309348",
+    "name": "江伙业",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309345",
+    "name": "冯达豪",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309349",
+    "name": "张健聪",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P309342",
+    "name": "谢桂泉",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P297085",
+    "name": "谭伟",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P139948",
+    "name": "汪广伦",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P138783",
+    "name": "薛伟平",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P135345",
+    "name": "蒋文军",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P159231",
+    "name": "李平",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P310423",
+    "name": "王姗姗",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P311110",
+    "name": "赵新权",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P176536",
+    "name": "曾维斌",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314926",
+    "name": "余鹏",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/26"
+  },
+  {
+    "id": "P314430",
+    "name": "吕代强",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P309527",
+    "name": "王书林",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298716",
+    "name": "王明赣",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P316524",
+    "name": "吴烨磊",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P173446",
+    "name": "陈向勇",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312117",
+    "name": "严浪如",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P310243",
+    "name": "周剑剑",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P301689",
+    "name": "张胡钢",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298719",
+    "name": "齐志刚",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P785121",
+    "name": "陈国东",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P310244",
+    "name": "刘骏琪",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P297856",
+    "name": "陶文杰",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P299514",
+    "name": "陈思维",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298724",
+    "name": "颜志斌",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312116",
+    "name": "陈惠平",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P306988",
+    "name": "陈庆安",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P278294",
+    "name": "范凝华",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P316525",
+    "name": "吴林珀",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P313852",
+    "name": "易作章",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P299516",
+    "name": "戴勇军",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298722",
+    "name": "刘兴生",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P299519",
+    "name": "田苻平",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P237890",
+    "name": "姚军",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P313854",
+    "name": "刘禹",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P301686",
+    "name": "陈纪文",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P299515",
+    "name": "陈瑞洋",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312118",
+    "name": "高春平",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P307458",
+    "name": "马继春",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298715",
+    "name": "乐香俊",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P314434",
+    "name": "赵士通",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312119",
+    "name": "李本玉",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P301683",
+    "name": "谭诗华",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P289067",
+    "name": "王滔",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P313850",
+    "name": "颜轩正",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P786796",
+    "name": "徐胜文",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P307462",
+    "name": "张中杰",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P314433",
+    "name": "王斌",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P279888",
+    "name": "颜德波",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P290142",
+    "name": "黄求琴",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298718",
+    "name": "邓岳庭",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P301688",
+    "name": "刘长生",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P788300",
+    "name": "贺长建",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P224577",
+    "name": "雷永明",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P199874",
+    "name": "李武杰",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P313849",
+    "name": "蒋世羽",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298577",
+    "name": "徐华坚",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P179750",
+    "name": "赵洪国",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P176908",
+    "name": "周真礼",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298723",
+    "name": "郭大海",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P298713",
+    "name": "冯军鹤",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P308644",
+    "name": "刘文龙",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P233421",
+    "name": "陈发兴",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312120",
+    "name": "肖凯",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P312121",
+    "name": "谭宗添",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P786463",
+    "name": "王建光",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P316526",
+    "name": "韦玉军",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P786504",
+    "name": "刘彦亮",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P262834",
+    "name": "邓爱国",
+    "department": "生产服务部",
+    "authorizationDate": "2026/6/18"
+  },
+  {
+    "id": "P201134",
+    "name": "蒋栋",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P105067",
+    "name": "陈泳群",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P129325",
+    "name": "薛胜峰",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P129450",
+    "name": "张朋",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P130752",
+    "name": "邳立鹏",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P136910",
+    "name": "陈国壹",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P143189",
+    "name": "和世宝",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P153543",
+    "name": "廖毅超",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P153565",
+    "name": "杨超",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P153928",
+    "name": "谭巍",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P163996",
+    "name": "夏华山",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P163998",
+    "name": "徐英霆",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P164002",
+    "name": "张雨辰",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P175113",
+    "name": "石行",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P196135",
+    "name": "饶松",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  },
+  {
+    "id": "P224946",
+    "name": "林沛彬",
+    "department": "仪控部",
+    "authorizationDate": "2025/7/28"
+  }
+]

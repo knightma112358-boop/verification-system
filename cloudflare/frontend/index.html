@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.sheetjs.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://verification-system-api.hzware-verification.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>人员验证系统</title>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --success: #059669;
+      --danger: #DC2626;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --text: #1E293B;
+      --text-secondary: #64748B;
+      --border: #E2E8F0;
+      --radius: 14px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    [hidden] { display: none !important; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .header {
+      width: 100%; background: var(--primary); color: #fff;
+      text-align: center; padding: 20px 16px 18px;
+      box-shadow: 0 2px 8px rgba(79,70,229,.25);
+    }
+    .header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: .02em; }
+    .header .sub { font-size: .8rem; opacity: .8; margin-top: 4px; }
+    .tabs {
+      display: flex; width: calc(100% - 32px); max-width: 420px;
+      margin: 16px auto 0; background: var(--card); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .tab {
+      flex: 1; text-align: center; padding: 12px 0; font-size: .95rem;
+      font-weight: 600; color: var(--text-secondary); cursor: pointer;
+      transition: all .2s; border-bottom: 3px solid transparent;
+    }
+    .tab.active { color: var(--primary); border-bottom-color: var(--primary); background: #EEF2FF; }
+    .main { width: 100%; max-width: 420px; padding: 0 16px; flex: 1; }
+    .page { display: none; margin-top: 20px; }
+    .page.active { display: block; }
+    .card {
+      background: var(--card); border-radius: var(--radius);
+      padding: 24px 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: .88rem; font-weight: 600; margin-bottom: 6px; }
+    .form-group input {
+      width: 100%; padding: 13px 14px; font-size: 1rem;
+      border: 1.5px solid var(--border); border-radius: 10px; outline: none;
+      transition: border-color .2s; background: #FAFBFC; color: var(--text);
+    }
+    .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
+    .btn {
+      display: block; width: 100%; padding: 14px; font-size: 1.05rem;
+      font-weight: 700; border: none; border-radius: 10px; cursor: pointer;
+      transition: all .2s; letter-spacing: .04em; text-align: center;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-outline { background: #fff; color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-sm { padding: 8px 16px; font-size: .82rem; width: auto; display: inline-block; }
+
+    .result {
+      margin-top: 24px; padding: 20px; border-radius: var(--radius);
+      text-align: center; display: none; animation: fadeIn .3s ease;
+    }
+    .result.show { display: block; }
+    .result.authorized { background: #ECFDF5; border: 2px solid #6EE7B7; }
+    .result.expired { background: #FFF7ED; border: 2px solid #FDBA74; }
+    .result.unauthorized { background: #FEF2F2; border: 2px solid #FECACA; }
+    .result .icon { font-size: 3rem; margin-bottom: 8px; }
+    .result .status { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .result.authorized .status { color: var(--success); }
+    .result.expired .status { color: #C2410C; }
+    .result.unauthorized .status { color: var(--danger); }
+    .result .detail { font-size: .85rem; color: var(--text-secondary); margin-top: 6px; }
+
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    .person-list { list-style: none; max-height: 50vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .person-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .person-item:last-child { border-bottom: none; }
+    .person-info { flex: 1; }
+    .person-info .p-name { font-weight: 600; font-size: .95rem; }
+    .person-info .p-meta { font-size: .78rem; color: var(--text-secondary); }
+    .person-item .btn-sm { flex-shrink: 0; }
+    .stats { text-align: center; font-size: .85rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .stats strong { color: var(--primary); font-size: 1.2rem; }
+
+    .batch-area {
+      width: 100%; min-height: 120px; font-size: .85rem; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 12px; resize: vertical; font-family: inherit;
+      outline: none; margin-bottom: 12px; background: #FAFBFC;
+    }
+    .batch-area:focus { border-color: var(--primary); }
+    .batch-hint { font-size: .75rem; color: var(--text-secondary); margin-bottom: 12px; }
+
+    .token-setup { margin-bottom: 14px; }
+    .token-setup input { font-size: .8rem; padding: 8px 10px; width: 100%; border:1.5px solid var(--border); border-radius:8px; outline:none; }
+    .token-setup input:focus { border-color: var(--primary); }
+    .token-hint { font-size: .72rem; color: var(--text-secondary); margin-top: 4px; }
+
+    .toast {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: #1E293B; color: #fff; padding: 12px 24px; border-radius: 8px;
+      font-size: .9rem; z-index: 999; pointer-events: none; opacity: 0;
+      transition: opacity .3s;
+    }
+    .toast.show { opacity: 1; }
+    .footer { text-align: center; padding: 16px; font-size: .72rem; color: var(--text-secondary); opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🔐 人员验证系统</h1>
+    <div class="sub">扫码验证 · 实时查询</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-page="verify">✅ 身份验证</div>
+    <div class="tab" data-page="admin">⚙️ 名单管理</div>
+  </div>
+
+  <div class="main">
+
+    <!-- ===== 验证页 ===== -->
+    <div class="page active" id="page-verify">
+      <div class="card">
+        <form id="verify-form" autocomplete="off">
+          <div class="form-group">
+            <label for="input-name">姓名</label>
+            <input type="text" id="input-name" placeholder="请输入姓名" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="input-id">工号</label>
+            <input type="text" id="input-id" placeholder="请输入工号" required>
+          </div>
+          <button type="submit" class="btn btn-primary">🔍 验证身份</button>
+        </form>
+
+        <div style="text-align:center;margin-top:20px;" id="qrcode-section">
+          <p style="font-size:.82rem;color:var(--text-secondary);margin-bottom:10px;">📱 扫描二维码进入验证</p>
+          <img src="qrcode.png" alt="QR Code" style="width:180px;height:180px;border-radius:10px;box-shadow:var(--shadow);"
+               id="qr-img" onerror="this.style.display='none'">
+          <p style="font-size:.72rem;color:var(--text-secondary);margin-top:8px;word-break:break-all;" id="site-url"></p>
+        </div>
+
+        <div class="result" id="result">
+          <div class="icon" id="result-icon"></div>
+          <div class="status" id="result-status"></div>
+          <div class="detail" id="result-detail"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 管理页 ===== -->
+    <div class="page" id="page-admin">
+      <!-- 管理员密码 -->
+      <div class="card">
+        <h3 style="margin-bottom:8px;font-size:.95rem;">🔑 管理员密码</h3>
+        <div class="token-setup">
+          <input type="password" id="admin-pwd" placeholder="请输入管理密码">
+        </div>
+        <p class="token-hint">
+          密码由安全服务器验证，验证通过后才能查看和编辑名单，密码不会保存在浏览器中
+        </p>
+      </div>
+
+      <!-- 添加 -->
+      <div class="card">
+        <h3 style="margin-bottom:14px;font-size:.95rem;">➕ 添加人员</h3>
+        <form id="add-form" autocomplete="off">
+          <div class="form-group">
+            <label for="add-name">姓名</label>
+            <input type="text" id="add-name" placeholder="姓名" required>
+          </div>
+          <div class="form-group">
+            <label for="add-id">工号</label>
+            <input type="text" id="add-id" placeholder="工号" required>
+          </div>
+          <div class="form-group">
+            <label for="add-dept">部门（选填）</label>
+            <input type="text" id="add-dept" placeholder="部门">
+          </div>
+          <div class="form-group">
+            <label for="add-auth-date">授权日期</label>
+            <input type="date" id="add-auth-date" required>
+          </div>
+          <button type="submit" class="btn btn-success">✅ 添加到名单</button>
+        </form>
+      </div>
+
+      <!-- 批量导入 -->
+      <div class="card">
+        <h3 style="margin-bottom:8px;font-size:.95rem;">📋 批量导入</h3>
+        <p class="batch-hint">方式一：粘贴文本（每行：<code>姓名,工号,部门,授权日期</code>）</p>
+        <textarea class="batch-area" id="batch-input" placeholder="张三,001,技术部,2026/7/14&#10;李四,002,产品部,2026/7/14"></textarea>
+        <button class="btn btn-outline" id="btn-batch" style="margin-bottom:12px;">📥 文本导入</button>
+        <p class="batch-hint">方式二：上传 Excel 文件（第一行表头：<b>姓名 | 工号 | 部门 | 授权日期</b>，支持 .xlsx / .xls）</p>
+        <input type="file" id="excel-file" accept=".xlsx,.xls" style="display:none;">
+        <button class="btn btn-outline" id="btn-excel-import">📥 Excel 导入</button>
+      </div>
+
+      <!-- 名单 -->
+      <div class="card">
+        <h3 style="margin-bottom:8px;font-size:.95rem;">📜 当前名单</h3>
+        <div class="stats" id="stats">🔒 输入管理员密码后查看名单</div>
+        <ul class="person-list" id="person-list" hidden></ul>
+        <div id="list-actions" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;" hidden>
+          <button class="btn btn-danger btn-sm" id="btn-clear">🗑 清空名单</button>
+          <button class="btn btn-outline btn-sm" id="btn-excel-export">📤 导出 Excel</button>
+          <button class="btn btn-outline btn-sm" onclick="location.reload()">🔄 刷新名单</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="footer">人员验证系统 v2.0 · Powered by GitHub Pages</div>
+
+  <script>
+    const API_BASE = 'https://verification-system-api.hzware-verification.workers.dev';
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => document.querySelectorAll(selector);
+    let adminToken = null;
+
+    $('#site-url').textContent = window.location.href;
+
+    function toast(message) {
+      const element = $('#toast');
+      element.textContent = message;
+      element.classList.add('show');
+      clearTimeout(element._timer);
+      element._timer = setTimeout(() => element.classList.remove('show'), 2600);
+    }
+
+    function esc(value) {
+      return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function parseAuthorizationDate(value) {
+      if (value instanceof Date && !Number.isNaN(value.getTime())) {
+        return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+      }
+      if (typeof value === 'number' && window.XLSX) {
+        const parsed = XLSX.SSF.parse_date_code(value);
+        if (parsed) return new Date(parsed.y, parsed.m - 1, parsed.d);
+      }
+      const match = String(value || '').trim().match(/^(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})$/);
+      if (!match) return null;
+      const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+      if (date.getFullYear() !== Number(match[1]) || date.getMonth() !== Number(match[2]) - 1 || date.getDate() !== Number(match[3])) return null;
+      return date;
+    }
+
+    function formatAuthorizationDate(value) {
+      const date = parseAuthorizationDate(value);
+      return date ? `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}` : '';
+    }
+
+    function isAuthorizationExpired(value, now = new Date()) {
+      const authorizationDate = parseAuthorizationDate(value);
+      if (!authorizationDate) return false;
+      const anniversary = new Date(authorizationDate);
+      anniversary.setFullYear(anniversary.getFullYear() + 1);
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      return today > anniversary;
+    }
+
+    function getToken() {
+      return adminToken;
+    }
+
+    function setAdminListLocked(locked) {
+      $('#person-list').hidden = locked;
+      $('#list-actions').hidden = locked;
+      if (locked) {
+        $('#person-list').innerHTML = '';
+        $('#stats').textContent = '🔒 输入管理员密码后查看名单';
+      }
+    }
+
+    async function apiRequest(path, options = {}, requireAdmin = false) {
+      if (requireAdmin && !adminToken) throw new Error('请先输入管理密码');
+      const headers = new Headers(options.headers || {});
+      if (options.body) headers.set('Content-Type', 'application/json');
+      if (requireAdmin) headers.set('Authorization', `Bearer ${adminToken}`);
+
+      let response;
+      try {
+        response = await fetch(`${API_BASE}${path}`, { ...options, headers, cache: 'no-store' });
+      } catch {
+        throw new Error('无法连接安全服务器，请检查网络后重试');
+      }
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        if (response.status === 401 && requireAdmin) {
+          adminToken = null;
+          $('#admin-pwd').value = '';
+          setAdminListLocked(true);
+        }
+        throw new Error(data.error || `请求失败 (${response.status})`);
+      }
+      return data;
+    }
+
+    async function unlockWithPassword(password) {
+      const data = await apiRequest('/api/admin/login', {
+        method: 'POST',
+        body: JSON.stringify({ password }),
+      });
+      adminToken = data.token;
+    }
+
+    setAdminListLocked(true);
+
+    $('#admin-pwd').addEventListener('change', async () => {
+      const password = $('#admin-pwd').value.trim();
+      if (!password) {
+        adminToken = null;
+        setAdminListLocked(true);
+        return;
+      }
+      try {
+        await unlockWithPassword(password);
+        toast('✅ 密码正确，已解锁管理功能');
+        await refreshAdminList();
+      } catch (error) {
+        adminToken = null;
+        setAdminListLocked(true);
+        toast(`❌ ${error.message}`);
+      }
+    });
+
+    $$('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        $$('.tab').forEach(item => item.classList.remove('active'));
+        tab.classList.add('active');
+        $$('.page').forEach(page => page.classList.remove('active'));
+        $('#page-' + tab.dataset.page).classList.add('active');
+        if (tab.dataset.page === 'admin') {
+          if (getToken()) refreshAdminList();
+          else setAdminListLocked(true);
+        }
+      });
+    });
+
+    $('#verify-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const name = $('#input-name').value.trim();
+      const id = $('#input-id').value.trim();
+      if (!name || !id) { toast('请填写姓名和工号'); return; }
+
+      try {
+        const data = await apiRequest('/api/verify', {
+          method: 'POST',
+          body: JSON.stringify({ name, id }),
+        });
+        renderVerificationResult(data);
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    });
+
+    function renderVerificationResult(data) {
+      const result = $('#result');
+      result.classList.remove('authorized', 'expired', 'unauthorized', 'show');
+      const person = data.person;
+
+      if (data.status === 'authorized' && person) {
+        result.classList.add('authorized', 'show');
+        $('#result-icon').textContent = '✅';
+        $('#result-status').textContent = '已授权';
+        $('#result-detail').textContent = `${person.name} · ${person.id} · ${person.department || '—'} · 授权日期 ${person.authorizationDate}`;
+      } else if (data.status === 'expired' && person) {
+        result.classList.add('expired', 'show');
+        $('#result-icon').textContent = '⏰';
+        $('#result-status').textContent = '授权已超期';
+        $('#result-detail').textContent = `${person.name} · ${person.id} · ${person.department || '—'} · 授权日期 ${person.authorizationDate}`;
+      } else if (data.status === 'missing_date' && person) {
+        result.classList.add('expired', 'show');
+        $('#result-icon').textContent = '⚠️';
+        $('#result-status').textContent = '授权日期缺失';
+        $('#result-detail').textContent = `${person.name} · ${person.id} · 请联系管理员补充授权日期`;
+      } else {
+        result.classList.add('unauthorized', 'show');
+        $('#result-icon').textContent = '🚫';
+        $('#result-status').textContent = '未授权';
+        $('#result-detail').textContent = '该人员不在授权名单中';
+      }
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    async function loadPersonnelFromApi() {
+      return apiRequest('/api/admin/personnel', {}, true);
+    }
+
+    async function refreshAdminList() {
+      if (!getToken()) {
+        setAdminListLocked(true);
+        return;
+      }
+      setAdminListLocked(false);
+      $('#stats').textContent = '加载中...';
+      try {
+        const result = await loadPersonnelFromApi();
+        const list = result.data || [];
+        $('#stats').innerHTML = `共 <strong>${list.length}</strong> 人在名单中`;
+        $('#person-list').innerHTML = list.map(person => `
+          <li class="person-item">
+            <div class="person-info">
+              <div class="p-name">${esc(person.name)}</div>
+              <div class="p-meta">工号: ${esc(person.id)} ${person.department ? '· ' + esc(person.department) : ''}</div>
+              <div class="p-meta">授权日期: ${esc(formatAuthorizationDate(person.authorizationDate) || '未填写')}${isAuthorizationExpired(person.authorizationDate) ? ' · 已超期' : ''}</div>
+            </div>
+            <button class="btn btn-danger btn-sm" data-id="${esc(person.id)}">删除</button>
+          </li>
+        `).join('');
+        $$('#person-list .btn-danger').forEach(button => {
+          button.addEventListener('click', () => deletePerson(button.dataset.id));
+        });
+      } catch (error) {
+        $('#stats').textContent = `⚠️ ${error.message}`;
+        $('#person-list').innerHTML = '';
+      }
+    }
+
+    $('#add-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const person = {
+        name: $('#add-name').value.trim(),
+        id: $('#add-id').value.trim(),
+        department: $('#add-dept').value.trim(),
+        authorizationDate: formatAuthorizationDate($('#add-auth-date').value),
+      };
+      if (!person.name || !person.id || !person.authorizationDate) {
+        toast('请填写姓名、工号和有效的授权日期');
+        return;
+      }
+      try {
+        await apiRequest('/api/admin/personnel', {
+          method: 'POST',
+          body: JSON.stringify(person),
+        }, true);
+        toast('✅ 添加成功');
+        $('#add-form').reset();
+        await refreshAdminList();
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    });
+
+    async function deletePerson(id) {
+      if (!confirm(`确定删除工号 ${id} 的人员吗？`)) return;
+      try {
+        await apiRequest(`/api/admin/personnel/${encodeURIComponent(id)}`, { method: 'DELETE' }, true);
+        toast('已删除');
+        await refreshAdminList();
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    }
+
+    async function importPersonnel(personnel, source) {
+      try {
+        const result = await apiRequest('/api/admin/personnel/import', {
+          method: 'POST',
+          body: JSON.stringify({ personnel }),
+        }, true);
+        toast(`✅ ${source}导入完成：新增 ${result.added} 人，更新 ${result.updated} 人，跳过 ${result.skipped} 人`);
+        await refreshAdminList();
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    }
+
+    $('#btn-batch').addEventListener('click', async () => {
+      const raw = $('#batch-input').value.trim();
+      if (!raw) { toast('请粘贴人员数据'); return; }
+      const personnel = raw.split('\n').filter(Boolean).map(line => {
+        const parts = line.split(',').map(value => value.trim());
+        return {
+          name: parts[0] || '',
+          id: parts[1] || '',
+          department: parts[2] || '',
+          authorizationDate: formatAuthorizationDate(parts[3]),
+        };
+      }).filter(person => person.name && person.id && person.authorizationDate);
+      if (personnel.length === 0) { toast('没有可导入的有效数据'); return; }
+      await importPersonnel(personnel, '文本');
+      $('#batch-input').value = '';
+    });
+
+    $('#btn-clear').addEventListener('click', async () => {
+      if (!confirm('⚠️ 确定清空全部名单？此操作不可恢复！')) return;
+      try {
+        await apiRequest('/api/admin/personnel', { method: 'DELETE' }, true);
+        toast('名单已清空');
+        await refreshAdminList();
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    });
+
+    $('#btn-excel-import').addEventListener('click', () => {
+      if (!getToken()) { toast('⚠️ 请先输入管理密码'); return; }
+      $('#excel-file').click();
+    });
+
+    $('#excel-file').addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async loadEvent => {
+        try {
+          const workbook = XLSX.read(loadEvent.target.result, { type: 'array', cellDates: true });
+          const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+          if (rows.length < 2) throw new Error('Excel 至少需要一行表头和一行数据');
+
+          const header = rows[0].map(value => String(value || '').trim());
+          const nameColumn = header.findIndex(value => value.includes('姓名'));
+          const idColumn = header.findIndex(value => value.includes('工号'));
+          const departmentColumn = header.findIndex(value => value.includes('部门'));
+          const dateColumn = header.findIndex(value => value.includes('授权日期'));
+          if (nameColumn < 0 || idColumn < 0 || dateColumn < 0) {
+            throw new Error('表头必须包含「姓名」「工号」和「授权日期」列');
+          }
+
+          const personnel = rows.slice(1).map(row => ({
+            name: String(row[nameColumn] || '').trim(),
+            id: String(row[idColumn] || '').trim(),
+            department: departmentColumn >= 0 ? String(row[departmentColumn] || '').trim() : '',
+            authorizationDate: formatAuthorizationDate(row[dateColumn]),
+          })).filter(person => person.name && person.id && person.authorizationDate);
+          if (personnel.length === 0) throw new Error('Excel 中没有可导入的有效数据');
+          await importPersonnel(personnel, 'Excel ');
+        } catch (error) {
+          toast(`❌ Excel 解析失败：${error.message}`);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+      event.target.value = '';
+    });
+
+    $('#btn-excel-export').addEventListener('click', async () => {
+      try {
+        const result = await loadPersonnelFromApi();
+        const list = result.data || [];
+        if (list.length === 0) { toast('名单为空，无需导出'); return; }
+        const rows = [['姓名', '工号', '部门', '授权日期']];
+        for (const person of list) {
+          rows.push([person.name, person.id, person.department || '', formatAuthorizationDate(person.authorizationDate)]);
+        }
+        const workbook = XLSX.utils.book_new();
+        const sheet = XLSX.utils.aoa_to_sheet(rows);
+        sheet['!cols'] = [{ wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 15 }];
+        XLSX.utils.book_append_sheet(workbook, sheet, '人员名单');
+        XLSX.writeFile(workbook, `人员名单_${new Date().toISOString().slice(0, 10)}.xlsx`);
+        toast('📤 导出成功');
+      } catch (error) {
+        toast(`❌ ${error.message}`);
+      }
+    });
+
+    $('#input-id').addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        $('#verify-form').dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+</body>
+</html>
