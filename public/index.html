@@ -19,6 +19,7 @@
       --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
+    [hidden] { display: none !important; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
         "Microsoft YaHei", "Helvetica Neue", sans-serif;
@@ -216,9 +217,9 @@
       <!-- 名单 -->
       <div class="card">
         <h3 style="margin-bottom:8px;font-size:.95rem;">📜 当前名单</h3>
-        <div class="stats" id="stats">加载中...</div>
-        <ul class="person-list" id="person-list"></ul>
-        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+        <div class="stats" id="stats">🔒 输入管理员密码后查看名单</div>
+        <ul class="person-list" id="person-list" hidden></ul>
+        <div id="list-actions" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;" hidden>
           <button class="btn btn-danger btn-sm" id="btn-clear">🗑 清空名单</button>
           <button class="btn btn-outline btn-sm" id="btn-excel-export">📤 导出 Excel</button>
           <button class="btn btn-outline btn-sm" onclick="location.reload()">🔄 刷新名单</button>
@@ -332,10 +333,27 @@
       }
     }
 
-    // 管理员密码输入
+    function setAdminListLocked(locked) {
+      $('#person-list').hidden = locked;
+      $('#list-actions').hidden = locked;
+      if (locked) {
+        $('#person-list').innerHTML = '';
+        $('#stats').textContent = '🔒 输入管理员密码后查看名单';
+      }
+    }
+
+    // 每次打开页面都要求重新输入密码，不在浏览器中保存管理员密码。
+    localStorage.removeItem('admin_pwd');
+    setAdminListLocked(true);
+
     $('#admin-pwd').addEventListener('change', async () => {
       const pwd = $('#admin-pwd').value.trim();
-      if (!pwd) return;
+      if (!pwd) {
+        decryptedToken = null;
+        setAdminListLocked(true);
+        return;
+      }
+
       const ok = await unlockWithPassword(pwd);
       if (ok) {
         toast('✅ 密码正确，已解锁管理功能');
@@ -343,22 +361,8 @@
       } else {
         toast('❌ 密码错误');
         decryptedToken = null;
+        setAdminListLocked(true);
       }
-    });
-    // 页面加载时尝试自动解密（如果 localStorage 存过密码）
-    (() => {
-      const saved = localStorage.getItem('admin_pwd');
-      if (saved) {
-        $('#admin-pwd').value = saved;
-        unlockWithPassword(saved).then(ok => {
-          if (ok && $('#page-admin').classList.contains('active')) refreshAdminList();
-        });
-      }
-    })();
-    // 记住密码（可选）
-    $('#admin-pwd').addEventListener('blur', () => {
-      const pwd = $('#admin-pwd').value.trim();
-      if (pwd && decryptedToken) localStorage.setItem('admin_pwd', pwd);
     });
 
     // ── Base64 ↔ UTF-8 转换 ──
@@ -379,7 +383,8 @@
     // ── 从 GitHub API 读取名单 ──
     async function loadPersonnelFromGitHub() {
       const token = getToken();
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      if (!token) return null;
+      const headers = { Authorization: `Bearer ${token}` };
 
       try {
         const resp = await fetch(API_BASE, { headers, cache: 'no-store' });
@@ -445,7 +450,10 @@
         tab.classList.add('active');
         $$('.page').forEach(p => p.classList.remove('active'));
         $('#page-' + tab.dataset.page).classList.add('active');
-        if (tab.dataset.page === 'admin') refreshAdminList();
+        if (tab.dataset.page === 'admin') {
+          if (getToken()) refreshAdminList();
+          else setAdminListLocked(true);
+        }
       });
     });
 
@@ -493,10 +501,16 @@
 
     // ── 刷新管理员名单 ──
     async function refreshAdminList() {
+      if (!getToken()) {
+        setAdminListLocked(true);
+        return;
+      }
+
+      setAdminListLocked(false);
       $('#stats').textContent = '加载中...';
       const result = await loadPersonnelFromGitHub();
       if (!result) {
-        $('#stats').textContent = '⚠️ 需要设置 Token 才能管理名单';
+        $('#stats').textContent = '⚠️ 名单加载失败，请稍后重试';
         $('#person-list').innerHTML = '';
         return;
       }
@@ -682,6 +696,7 @@
 
     // ── Excel 导出 ──
     $('#btn-excel-export').addEventListener('click', async () => {
+      if (!getToken()) { toast('⚠️ 请先输入管理密码'); return; }
       const result = await loadPersonnelFromGitHub();
       if (!result) { toast('⚠️ 请先输入管理密码'); return; }
 
