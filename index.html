@@ -405,8 +405,8 @@
     async function loadPersonnelDirect() {
       const timestamp = Date.now();
       const urls = [
-        'https://raw.githubusercontent.com/' + REPO_OWNER + '/' + REPO_NAME + '/master/' + DATA_PATH + '?t=' + timestamp,
-        'data/personnel.json?t=' + timestamp
+        'data/personnel.json?t=' + timestamp,
+        'https://raw.githubusercontent.com/' + REPO_OWNER + '/' + REPO_NAME + '/master/' + DATA_PATH + '?t=' + timestamp
       ];
 
       for (const url of urls) {
