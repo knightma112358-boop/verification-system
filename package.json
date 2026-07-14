@@ -1,7 +1,7 @@
 {
   "name": "verification-system",
   "version": "1.0.0",
-  "description": "人员名单验证系统 - 扫码验证身份授权",
+  "description": "Personnel authorization verification system",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

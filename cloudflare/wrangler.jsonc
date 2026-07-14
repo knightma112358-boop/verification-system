@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "verification-system-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-14",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://knightma112358-boop.github.io"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "verification-system-db",
+      "database_id": "41a0f8e7-0a0d-48ad-8697-b94e5e929a49",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
