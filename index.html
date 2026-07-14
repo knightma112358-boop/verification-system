@@ -77,10 +77,12 @@
     }
     .result.show { display: block; }
     .result.authorized { background: #ECFDF5; border: 2px solid #6EE7B7; }
+    .result.expired { background: #FFF7ED; border: 2px solid #FDBA74; }
     .result.unauthorized { background: #FEF2F2; border: 2px solid #FECACA; }
     .result .icon { font-size: 3rem; margin-bottom: 8px; }
     .result .status { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
     .result.authorized .status { color: var(--success); }
+    .result.expired .status { color: #C2410C; }
     .result.unauthorized .status { color: var(--danger); }
     .result .detail { font-size: .85rem; color: var(--text-secondary); margin-top: 6px; }
 
@@ -192,6 +194,10 @@
             <label for="add-dept">部门（选填）</label>
             <input type="text" id="add-dept" placeholder="部门">
           </div>
+          <div class="form-group">
+            <label for="add-auth-date">授权日期</label>
+            <input type="date" id="add-auth-date" required>
+          </div>
           <button type="submit" class="btn btn-success">✅ 添加到名单</button>
         </form>
       </div>
@@ -199,10 +205,10 @@
       <!-- 批量导入 -->
       <div class="card">
         <h3 style="margin-bottom:8px;font-size:.95rem;">📋 批量导入</h3>
-        <p class="batch-hint">方式一：粘贴文本（每行：<code>姓名,工号,部门</code>）</p>
-        <textarea class="batch-area" id="batch-input" placeholder="张三,001,技术部&#10;李四,002,产品部&#10;王五,003"></textarea>
+        <p class="batch-hint">方式一：粘贴文本（每行：<code>姓名,工号,部门,授权日期</code>）</p>
+        <textarea class="batch-area" id="batch-input" placeholder="张三,001,技术部,2026/7/14&#10;李四,002,产品部,2026/7/14"></textarea>
         <button class="btn btn-outline" id="btn-batch" style="margin-bottom:12px;">📥 文本导入</button>
-        <p class="batch-hint">方式二：上传 Excel 文件（第一行表头：<b>姓名 | 工号 | 部门</b>，支持 .xlsx / .xls）</p>
+        <p class="batch-hint">方式二：上传 Excel 文件（第一行表头：<b>姓名 | 工号 | 部门 | 授权日期</b>，支持 .xlsx / .xls）</p>
         <input type="file" id="excel-file" accept=".xlsx,.xls" style="display:none;">
         <button class="btn btn-outline" id="btn-excel-import">📥 Excel 导入</button>
       </div>
@@ -249,6 +255,37 @@
 
     function esc(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function parseAuthorizationDate(value) {
+      if (value instanceof Date && !Number.isNaN(value.getTime())) {
+        return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+      }
+
+      if (typeof value === 'number' && window.XLSX) {
+        const parsed = XLSX.SSF.parse_date_code(value);
+        if (parsed) return new Date(parsed.y, parsed.m - 1, parsed.d);
+      }
+
+      const match = String(value || '').trim().match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);
+      if (!match) return null;
+      const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+      if (date.getFullYear() !== Number(match[1]) || date.getMonth() !== Number(match[2]) - 1 || date.getDate() !== Number(match[3])) return null;
+      return date;
+    }
+
+    function formatAuthorizationDate(value) {
+      const date = parseAuthorizationDate(value);
+      return date ? `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}` : '';
+    }
+
+    function isAuthorizationExpired(value, now = new Date()) {
+      const authorizationDate = parseAuthorizationDate(value);
+      if (!authorizationDate) return false;
+      const anniversary = new Date(authorizationDate);
+      anniversary.setFullYear(anniversary.getFullYear() + 1);
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      return today > anniversary;
     }
 
     // ── 加密的 GitHub Token（AES-256-GCM + PBKDF2，密码 HZWARE）──
@@ -424,13 +461,27 @@
       const found = list.find(p => p.name.trim() === name && p.id.trim() === id);
 
       const result = $('#result');
-      result.classList.remove('authorized', 'unauthorized', 'show');
+      result.classList.remove('authorized', 'expired', 'unauthorized', 'show');
 
       if (found) {
-        result.classList.add('authorized', 'show');
-        $('#result-icon').textContent = '✅';
-        $('#result-status').textContent = '已授权';
-        $('#result-detail').textContent = `${found.name} · ${found.id} · ${found.department || '—'}`;
+        const authorizationDate = formatAuthorizationDate(found.authorizationDate);
+        const personDetail = `${found.name} · ${found.id} · ${found.department || '—'}`;
+        if (!authorizationDate) {
+          result.classList.add('expired', 'show');
+          $('#result-icon').textContent = '⚠️';
+          $('#result-status').textContent = '授权日期缺失';
+          $('#result-detail').textContent = `${personDetail} · 请联系管理员补充授权日期`;
+        } else if (isAuthorizationExpired(found.authorizationDate)) {
+          result.classList.add('expired', 'show');
+          $('#result-icon').textContent = '⏰';
+          $('#result-status').textContent = '授权已超期';
+          $('#result-detail').textContent = `${personDetail} · 授权日期 ${authorizationDate}`;
+        } else {
+          result.classList.add('authorized', 'show');
+          $('#result-icon').textContent = '✅';
+          $('#result-status').textContent = '已授权';
+          $('#result-detail').textContent = `${personDetail} · 授权日期 ${authorizationDate}`;
+        }
       } else {
         result.classList.add('unauthorized', 'show');
         $('#result-icon').textContent = '🚫';
@@ -456,6 +507,7 @@
           <div class="person-info">
             <div class="p-name">${esc(p.name)}</div>
             <div class="p-meta">工号: ${esc(p.id)} ${p.department ? '· ' + esc(p.department) : ''}</div>
+            <div class="p-meta">授权日期: ${esc(formatAuthorizationDate(p.authorizationDate) || '未填写')}${isAuthorizationExpired(p.authorizationDate) ? ' · 已超期' : ''}</div>
           </div>
           <button class="btn btn-danger btn-sm" data-id="${esc(p.id)}">删除</button>
         </li>
@@ -482,8 +534,9 @@
       const name = $('#add-name').value.trim();
       const id = $('#add-id').value.trim();
       const department = $('#add-dept').value.trim();
+      const authorizationDate = formatAuthorizationDate($('#add-auth-date').value);
 
-      if (!name || !id) { toast('请填写姓名和工号'); return; }
+      if (!name || !id || !authorizationDate) { toast('请填写姓名、工号和有效的授权日期'); return; }
 
       const result = await loadPersonnelFromGitHub();
       if (!result) return;
@@ -491,7 +544,7 @@
       const { data: list, sha } = result;
       if (list.find(p => p.id === id)) { toast('⚠️ 该工号已存在'); return; }
 
-      list.push({ id, name, department });
+      list.push({ id, name, department, authorizationDate });
       const ok = await savePersonnelToGitHub(list, sha);
       if (ok) {
         toast('✅ 添加成功');
@@ -525,19 +578,26 @@
 
       const { data: list, sha } = result;
       const lines = raw.split('\n').filter(Boolean);
-      let added = 0, skipped = 0;
+      let added = 0, updated = 0, skipped = 0;
 
       for (const line of lines) {
         const parts = line.split(',').map(s => s.trim());
-        if (!parts[0] || !parts[1]) continue;
-        if (list.find(p => p.id === parts[1])) { skipped++; continue; }
-        list.push({ name: parts[0], id: parts[1], department: parts[2] || '' });
-        added++;
+        const authorizationDate = formatAuthorizationDate(parts[3]);
+        if (!parts[0] || !parts[1] || !authorizationDate) { skipped++; continue; }
+        const existing = list.find(p => p.id === parts[1]);
+        const person = { name: parts[0], id: parts[1], department: parts[2] || '', authorizationDate };
+        if (existing) {
+          Object.assign(existing, person);
+          updated++;
+        } else {
+          list.push(person);
+          added++;
+        }
       }
 
       const ok = await savePersonnelToGitHub(list, sha);
       if (ok) {
-        toast(`导入完成：新增 ${added} 人，跳过 ${skipped} 人`);
+        toast(`导入完成：新增 ${added} 人，更新 ${updated} 人，跳过 ${skipped} 人`);
         $('#batch-input').value = '';
         refreshAdminList();
       }
@@ -565,7 +625,7 @@
       const reader = new FileReader();
       reader.onload = async (evt) => {
         try {
-          const wb = XLSX.read(evt.target.result, { type: 'array' });
+          const wb = XLSX.read(evt.target.result, { type: 'array', cellDates: true });
           const ws = wb.Sheets[wb.SheetNames[0]];
           const rows = XLSX.utils.sheet_to_json(ws, { header: 1 });
 
@@ -576,33 +636,40 @@
           const nameCol = header.findIndex(h => h.includes('姓名'));
           const idCol = header.findIndex(h => h.includes('工号'));
           const deptCol = header.findIndex(h => h.includes('部门'));
+          const authDateCol = header.findIndex(h => h.includes('授权日期'));
 
-          if (nameCol === -1 || idCol === -1) {
-            toast('表头必须包含「姓名」和「工号」列');
+          if (nameCol === -1 || idCol === -1 || authDateCol === -1) {
+            toast('表头必须包含「姓名」「工号」和「授权日期」列');
             return;
           }
 
           const { data: list, sha } = result;
-          let added = 0, skipped = 0;
+          let added = 0, updated = 0, skipped = 0;
 
           for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             const name = String(row[nameCol] || '').trim();
             const id = String(row[idCol] || '').trim();
             const dept = deptCol >= 0 ? String(row[deptCol] || '').trim() : '';
+            const authorizationDate = formatAuthorizationDate(row[authDateCol]);
 
-            if (!name || !id) continue;
-            if (list.find(p => p.id === id)) { skipped++; continue; }
-
-            list.push({ id, name, department: dept });
-            added++;
+            if (!name || !id || !authorizationDate) { skipped++; continue; }
+            const existing = list.find(p => p.id === id);
+            const person = { id, name, department: dept, authorizationDate };
+            if (existing) {
+              Object.assign(existing, person);
+              updated++;
+            } else {
+              list.push(person);
+              added++;
+            }
           }
 
-          if (added === 0 && skipped === 0) { toast('Excel 中没有有效数据'); return; }
+          if (added === 0 && updated === 0) { toast('Excel 中没有可导入的有效数据'); return; }
 
           const ok = await savePersonnelToGitHub(list, sha);
           if (ok) {
-            toast(`✅ Excel 导入完成：新增 ${added} 人，跳过 ${skipped} 人`);
+            toast(`✅ Excel 导入完成：新增 ${added} 人，更新 ${updated} 人，跳过 ${skipped} 人`);
             refreshAdminList();
           }
         } catch (err) {
@@ -622,14 +689,14 @@
       if (list.length === 0) { toast('名单为空，无需导出'); return; }
 
       // 构建 Excel 数据
-      const rows = [['姓名', '工号', '部门']];
-      for (const p of list) rows.push([p.name, p.id, p.department || '']);
+      const rows = [['姓名', '工号', '部门', '授权日期']];
+      for (const p of list) rows.push([p.name, p.id, p.department || '', formatAuthorizationDate(p.authorizationDate)]);
 
       const wb = XLSX.utils.book_new();
       const ws = XLSX.utils.aoa_to_sheet(rows);
 
       // 设置列宽
-      ws['!cols'] = [{ wch: 15 }, { wch: 15 }, { wch: 20 }];
+      ws['!cols'] = [{ wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 15 }];
 
       XLSX.utils.book_append_sheet(wb, ws, '人员名单');
       XLSX.writeFile(wb, `人员名单_${new Date().toISOString().slice(0, 10)}.xlsx`);
